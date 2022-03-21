@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 
 export interface PrivateRouteProps {
   children: JSX.Element;
 }
 
-export function PrivateRoute({ children }: PrivateRouteProps) {
-  let location = useLocation();
+export function PrivateRoute(props: RouteProps) {
   // Check login
   const isLogin = Boolean(localStorage.getItem('access_token'));
 
   if (!isLogin) {
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+    return <Redirect to="/login"></Redirect>;
   }
 
-  return children;
+  return <Route {...props}></Route>;
 }

@@ -1,9 +1,16 @@
-import { Box, Button, Paper, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Paper,
+  Typography,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useAppDispatch } from 'app/hooks';
-import * as React from 'react';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import React, { useEffect } from 'react';
 import theme from 'themes';
-import { login } from '../authSilce';
+import { login, selectIsLogging } from '../authSilce';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -21,6 +28,16 @@ const useStyles = makeStyles({
 export default function LoginPage() {
   const classes = useStyles();
   const dispatch = useAppDispatch();
+  const history = useHistory();
+  const isLogging = useAppSelector(selectIsLogging);
+
+  useEffect(() => {
+    const isLoggedIn = Boolean(localStorage.getItem('access_token'));
+
+    if (isLoggedIn) {
+      history.push('admin');
+    }
+  }, [history]);
 
   const handleLoginClick = () => {
     dispatch(
@@ -45,7 +62,8 @@ export default function LoginPage() {
             fullWidth
             onClick={handleLoginClick}
           >
-            Fake Login
+            {isLogging && <CircularProgress size={20} color="secondary" />}
+            &nbsp; Fake Login
           </Button>
         </Box>
       </Paper>

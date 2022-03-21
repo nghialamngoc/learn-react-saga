@@ -1,24 +1,25 @@
+import { ThemeProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import theme from 'themes';
+import { history } from 'utils';
 import App from './App';
 import { store } from './app/store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider } from '@emotion/react';
-import theme from 'themes';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <ConnectedRouter history={history}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <App />
         </ThemeProvider>
-      </BrowserRouter>
+      </ConnectedRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

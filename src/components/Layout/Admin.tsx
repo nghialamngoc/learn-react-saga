@@ -1,7 +1,26 @@
+import { Box } from '@mui/system';
+import { Header, Sidebar } from 'components/Common';
+import Dashboard from 'features/dashboard/Dashboard';
+import Student from 'features/student/Student';
 import * as React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import styles from './Admin.module.scss';
 
-export interface AdminProps {}
-
-export default function Admin(props: AdminProps) {
-  return <div>Admin Layout</div>;
+export default function Admin() {
+  return (
+    <Box className={styles.root}>
+      <Box className={styles.header}>
+        <Header></Header>
+      </Box>
+      <Box className={styles.sidebar}>
+        <Sidebar></Sidebar>
+      </Box>
+      <Box className={styles.main}>
+        <Switch>
+          <Route path="/admin/dashboard" component={Dashboard}></Route>
+          <Route path="/admin/students" component={Student}></Route>
+        </Switch>
+      </Box>
+    </Box>
+  );
 }
