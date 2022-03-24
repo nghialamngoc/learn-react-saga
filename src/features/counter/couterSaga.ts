@@ -1,4 +1,10 @@
-import { delay, put, takeEvery, takeLatest } from '@redux-saga/core/effects';
+import {
+  call,
+  delay,
+  put,
+  takeEvery,
+  takeLatest,
+} from '@redux-saga/core/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import {
   increment,

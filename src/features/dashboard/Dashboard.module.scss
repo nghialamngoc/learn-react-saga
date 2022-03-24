@@ -1,0 +1,11 @@
+.root {
+  position: relative;
+  padding-top: 8px;
+  width: 100%;
+
+  .loading {
+    position: absolute;
+    top: -8px;
+    width: 100%;
+  }
+}

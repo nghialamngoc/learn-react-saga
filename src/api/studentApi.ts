@@ -1,15 +1,14 @@
-import { ListResponse } from 'models/common';
+import { ListParams, ListResponse } from 'models/common';
 import { Student } from 'models/student';
 import axiosClient from './axiosClient';
 
 const studentApi = {
-  getAll(_limit = 10, _page: number): Promise<ListResponse<Student>> {
+  getAll(params: ListParams): Promise<ListResponse<Student>> {
     const url = `/students`;
 
     return axiosClient.get(url, {
       params: {
-        _limit,
-        _page,
+        ...params,
       },
     });
   },
