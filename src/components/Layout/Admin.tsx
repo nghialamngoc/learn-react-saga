@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import { Header, Sidebar } from 'components/Common';
 import Dashboard from 'features/dashboard';
-import Student from 'features/student/Student';
+import Student from 'features/student';
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styles from './Admin.module.scss';

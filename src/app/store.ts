@@ -2,7 +2,9 @@ import createSagaMiddleware from '@redux-saga/core';
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import authReducer from 'features/auth/authSilce';
+import cityReducer from 'features/city/citySlice';
 import dashboardReducer from 'features/dashboard/dashboardSlice';
+import studentReducer from 'features/student/studentSlice';
 import { history } from 'utils';
 import counterReducer from '../features/counter/counterSlice';
 import rootSaga from './rootSaga';
@@ -14,6 +16,8 @@ const rootReducer = {
   counter: counterReducer,
   auth: authReducer,
   dashboard: dashboardReducer,
+  student: studentReducer,
+  city: cityReducer,
 };
 
 export const store = configureStore({

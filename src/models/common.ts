@@ -18,4 +18,6 @@ export interface ListParams {
   gender?: 'male' | 'female';
   mark_gte?: number;
   mark_lte?: number;
+  name_like?: string;
+  city?: string;
 }

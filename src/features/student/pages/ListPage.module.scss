@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  padding-top: 8px;
+  width: 100%;
+
+  .loading {
+    position: absolute;
+    top: -8px;
+    width: 100%;
+  }
+
+  .title-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -1,11 +1,23 @@
+import { useAppDispatch } from 'app/hooks';
 import { NotFound, PrivateRoute } from 'components/Common';
 import Admin from 'components/Layout/Admin';
 import LoginPage from 'features/auth/pages/LoginPage';
-import React from 'react';
+import { cityActions } from 'features/city/citySlice';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 function App() {
-  
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(
+      cityActions.fetchData({
+        _page: 1,
+        _limit: 100,
+      })
+    );
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Switch>
