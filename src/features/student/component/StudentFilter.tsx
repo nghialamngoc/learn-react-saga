@@ -10,8 +10,9 @@ import {
 import { Box } from '@mui/system';
 import { useAppSelector } from 'app/hooks';
 import { selecteCityList } from 'features/city/citySlice';
+import { useEffect } from 'hoist-non-react-statics/node_modules/@types/react';
 import { ListParams } from 'models/common';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 export interface StudentFilterProps {
   filter: ListParams;
@@ -24,11 +25,12 @@ export default function StudentFilter({
   onChange,
   onSearchChange,
 }: StudentFilterProps) {
+  const [searchValue, setSearchValue] = useState('');
   const searchTimer = useRef<any>(null);
   const cityList = useAppSelector(selecteCityList);
-  const inputRef = useRef<HTMLInputElement>();
 
   const handleSearchChange = (value: string) => {
+    setSearchValue(value);
     if (searchTimer) {
       clearTimeout(searchTimer.current);
     }
@@ -52,8 +54,7 @@ export default function StudentFilter({
             <OutlinedInput
               id="outlined-adornment-weight"
               label="Search"
-              value={filter.name_like || ''}
-              inputRef={inputRef}
+              value={searchValue ? searchValue : ''}
               onChange={(e) => {
                 handleSearchChange(e.target.value);
               }}
@@ -138,9 +139,7 @@ export default function StudentFilter({
                 name_like: undefined,
               });
 
-              if (inputRef.current) {
-                inputRef.current.value = '';
-              }
+              setSearchValue('');
             }}
           >
             Clear

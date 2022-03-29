@@ -41,7 +41,6 @@ export default function ListPage() {
 
   return (
     <Box className={styles.root}>
-      {JSON.stringify(filter)}
       {loading && <LinearProgress className={styles.loading}></LinearProgress>}
 
       <Box className={styles['title-container']}>
