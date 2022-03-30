@@ -47,6 +47,16 @@ const studentSlice = createSlice({
     setFilter(state, action) {
       state.filter = action.payload;
     },
+
+    removeStudent(state, action: PayloadAction<string>) {
+      state.loading = true;
+    },
+    removeStudentSuccess(state) {
+      state.loading = false;
+    },
+    removeStudentFail(state) {
+      state.loading = false;
+    },
   },
 });
 

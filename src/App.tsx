@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'app/hooks';
-import { NotFound, PrivateRoute } from 'components/Common';
+import { NotFound, PrivateRoute } from 'components/common';
 import Admin from 'components/Layout/Admin';
 import LoginPage from 'features/auth/pages/LoginPage';
 import { cityActions } from 'features/city/citySlice';

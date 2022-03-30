@@ -19,8 +19,24 @@ function* handleFetchData(action: PayloadAction<ListParams>) {
   }
 }
 
+function* handleRemoveStudent(action: PayloadAction<string>) {
+  try {
+    yield call(studentApi.deleteStudent, action.payload);
+    yield put(studentActions.removeStudentSuccess());
+    yield put(
+      studentActions.fetchData({
+        _page: 1,
+        _limit: 10,
+      })
+    );
+  } catch (err) {
+    yield put(studentActions.removeStudentFail());
+  }
+}
+
 const studentSaga = function* () {
   yield takeLatest(studentActions.fetchData, handleFetchData);
+  yield takeLatest(studentActions.removeStudent, handleRemoveStudent);
 };
 
 export default studentSaga;

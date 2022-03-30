@@ -1,5 +1,5 @@
 import { Box } from '@mui/system';
-import { Header, Sidebar } from 'components/Common';
+import { Header, Sidebar } from 'components/common';
 import Dashboard from 'features/dashboard';
 import Student from 'features/student';
 import * as React from 'react';

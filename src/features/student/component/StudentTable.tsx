@@ -11,8 +11,9 @@ import { useAppSelector } from 'app/hooks';
 import { selecteCityList } from 'features/city/citySlice';
 import { City } from 'models';
 import { Student } from 'models/student';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { capitalizeString, getMarkColor } from 'utils';
+import { alertDialog } from 'utils/dialog';
 import styles from './StudentTable.module.scss';
 
 export interface StudentTableProps {
@@ -38,6 +39,20 @@ export default function StudentTable({
     }
 
     return '';
+  };
+
+  const openDialog = (student: Student) => {
+    alertDialog({
+      title: 'Remove student!',
+      message: 'Are you sure?',
+      handleSubmit: ({ setVisible }: any) => {
+        setVisible(false);
+
+        if (onRemove) {
+          onRemove(student);
+        }
+      },
+    });
   };
 
   return (
@@ -77,7 +92,7 @@ export default function StudentTable({
                 <Button
                   variant="outlined"
                   color="error"
-                  onClick={() => onRemove?.(student)}
+                  onClick={() => openDialog(student)}
                 >
                   Remove
                 </Button>

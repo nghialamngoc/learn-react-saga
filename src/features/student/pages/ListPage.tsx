@@ -2,6 +2,7 @@ import { Button, LinearProgress, Pagination, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { ListParams } from 'models/common';
+import { Student } from 'models/student';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import StudentFilter from '../component/StudentFilter';
@@ -39,6 +40,12 @@ export default function ListPage() {
     dispatch(studentActions.setFilter(filter));
   };
 
+  const onRemoveStudent = (student: Student) => {
+    if (student.id) {
+      dispatch(studentActions.removeStudent(student.id));
+    }
+  };
+
   return (
     <Box className={styles.root}>
       {loading && <LinearProgress className={styles.loading}></LinearProgress>}
@@ -64,7 +71,10 @@ export default function ListPage() {
 
       {/* Student Table */}
       <Box mt={4}>
-        <StudentTable studentList={list}></StudentTable>
+        <StudentTable
+          studentList={list}
+          onRemove={onRemoveStudent}
+        ></StudentTable>
       </Box>
 
       {/* Pagination */}

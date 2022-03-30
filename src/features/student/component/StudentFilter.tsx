@@ -49,7 +49,7 @@ export default function StudentFilter({
       <Box mb={2}>Student Filter</Box>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <FormControl fullWidth variant="outlined">
+          <FormControl fullWidth variant="outlined" size="small">
             <InputLabel htmlFor="standard-adornment-amount">Search</InputLabel>
             <OutlinedInput
               id="outlined-adornment-weight"
@@ -62,7 +62,7 @@ export default function StudentFilter({
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6} lg={3}>
-          <FormControl fullWidth>
+          <FormControl fullWidth size="small">
             <InputLabel id="demo-simple-select-label">City</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -90,7 +90,7 @@ export default function StudentFilter({
         </Grid>
 
         <Grid item xs={12} md={6} lg={2}>
-          <FormControl fullWidth>
+          <FormControl fullWidth size="small">
             <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
             <Select
               labelId="demo-simple-select-label"
