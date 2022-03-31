@@ -12,8 +12,6 @@ function* fetchStatistics() {
     call(studentApi.getAll, { _page: 1, _limit: 1, mark_lte: 5 }),
   ]);
 
-  console.log(responseList);
-
   const statisticList = responseList.map((x) => x.pagination._totalRows);
   const [maleCount, femaleCount, highMarkCount, lowMarkCount] = statisticList;
 

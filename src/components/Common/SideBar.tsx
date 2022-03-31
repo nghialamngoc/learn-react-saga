@@ -1,10 +1,8 @@
 import { Dashboard, PeopleAlt } from '@mui/icons-material';
 import {
   List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
+  ListItem, ListItemIcon,
+  ListItemText
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';

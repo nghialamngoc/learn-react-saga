@@ -5,12 +5,11 @@ import {
   InputLabel,
   MenuItem,
   OutlinedInput,
-  Select,
+  Select
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { useAppSelector } from 'app/hooks';
 import { selecteCityList } from 'features/city/citySlice';
-import { useEffect } from 'hoist-non-react-statics/node_modules/@types/react';
 import { ListParams } from 'models/common';
 import React, { useRef, useState } from 'react';
 
@@ -25,7 +24,7 @@ export default function StudentFilter({
   onChange,
   onSearchChange,
 }: StudentFilterProps) {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(filter.name_like);
   const searchTimer = useRef<any>(null);
   const cityList = useAppSelector(selecteCityList);
 

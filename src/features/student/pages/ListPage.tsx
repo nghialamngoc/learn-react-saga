@@ -74,6 +74,7 @@ export default function ListPage() {
         <StudentTable
           studentList={list}
           onRemove={onRemoveStudent}
+          onEdit={(student) => history.push(`/admin/students/${student.id}`)}
         ></StudentTable>
       </Box>
 

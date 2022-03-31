@@ -11,7 +11,7 @@ import { useAppSelector } from 'app/hooks';
 import { selecteCityList } from 'features/city/citySlice';
 import { City } from 'models';
 import { Student } from 'models/student';
-import React, { useState } from 'react';
+import React from 'react';
 import { capitalizeString, getMarkColor } from 'utils';
 import { alertDialog } from 'utils/dialog';
 import styles from './StudentTable.module.scss';
@@ -73,13 +73,13 @@ export default function StudentTable({
             <TableRow key={student.id}>
               <TableCell>{index + 1}</TableCell>
               <TableCell>{student.name}</TableCell>
-              <TableCell>{capitalizeString(student.gender)}</TableCell>
+              <TableCell>{capitalizeString(student.gender || '')}</TableCell>
               <TableCell>
-                <Box color={getMarkColor(student.mark)} fontWeight="bold">
+                <Box color={getMarkColor(student.mark || 0)} fontWeight="bold">
                   {student.mark}
                 </Box>
               </TableCell>
-              <TableCell>{cityName(student.city)}</TableCell>
+              <TableCell>{cityName(student.city || '')}</TableCell>
               <TableCell align="right" className={styles.actions}>
                 <Button
                   variant="contained"
